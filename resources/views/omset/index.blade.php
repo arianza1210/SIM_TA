@@ -2,7 +2,14 @@
 
 @section('content')
     <div class="container-fluid">
-
+        @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Berhasil!</strong> {{ session('success') }}.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Pendapatan</h1>
         <a href="{{ route('omset.create') }}" class="btn btn-success btn-icon-split mb-3">
@@ -27,34 +34,51 @@
                                 <th>Pengeluaran JKT</th>
                                 <th>Pengeluaran LPG</th>
                                 <th>Jumlah</th>
-                                <th>Action</th>
-
+                                <th class="text-center">Action</th>
                             </tr>
                         </thead>
-
                         <tbody>
+                            @foreach ($omsets as $omset)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $omset->created_at->format('Y-m-d') }}</td>
+                                    <td>{{ $omset->nopol }}</td>
+                                    <td>{{ $omset->nama_supir }}</td>
+                                    <td id="uang">{{ $omset->biaya_mobil }}</td>
+                                    <td id="uang">{{ $omset->pengeluaran_jkt }}</td>
+                                    <td id="uang">{{ $omset->pengeluaran_lpg }}</td>
+                                    <td id="uang">{{ $omset->jumlah_omset_bersih }}</td>
+                                    <td><a href="{{ route('omset.edit', $omset->id) }}"
+                                            class="btn-circle btn-warning btn-sm">
+                                            <span class="icon text-white-20">
+                                                <i class="fas fa-pen"></i>
+                                            </span>
+                                        </a>
+                                        <form action="{{ route('omset.delete', $omset->id) }}" method="POST"
+                                            class="d-inline">
+                                            @csrf
+                                            @method("DELETE")
+                                            <button onclick="return confirm('Apakah ingin menghapus data ini ?')"
+                                                class="btn-circle btn-danger btn-sm">
+                                                <span class="icon text-white-20">
+                                                    <i class="fas fa-trash"></i>
+                                                </span>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                             <tr>
-                                <td>1</td>
-                                <td>02/10/2021</td>
-                                <td>BE 9781 BE</td>
-                                <td>Buyung</td>
-                                <td>Rp. 6.000.000</td>
-                                <td>Rp. 6.000.000</td>
-                                <td>Rp. 6.000.000</td>
-                                <td>Rp. 6.000.000</td>
-                                <td><a href="{{ route("omset.edit", 1) }}" class="btn-circle btn-warning btn-sm">
-                                        <span class="icon text-white-20">
-                                            <i class="fas fa-pen"></i>
-                                        </span>
-                                    </a>
-                                    <a href="#" class="btn-circle btn-danger btn-sm">
-                                        <span class="icon text-white-20">
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                    </a>
-                                </td>
+                                <td colspan="7">TOTAL</td>
+                                <td colspan="2" id="uang">{{ $omsets->sum('jumlah_omset_bersih') }}</td>
+                                <td style="display: none;"></td>
+                                <td style="display: none;"></td>
+                                <td style="display: none;"></td>
+                                <td style="display: none;"></td>
+                                <td style="display: none;"></td>
+                                <td style="display: none;"></td>
+                                <td style="display: none;"></td>
                             </tr>
-
                         </tbody>
                     </table>
                 </div>
@@ -62,4 +86,15 @@
         </div>
 
     </div>
+@endsection
+
+@section('myscript')
+    <script>
+        $(document).ready(function() {
+            const uang = document.querySelectorAll("#uang");
+            for (const x of uang) {
+                x.innerHTML = rupiah(x.innerHTML)
+            }
+        });
+    </script>
 @endsection

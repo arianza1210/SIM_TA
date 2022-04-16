@@ -14,13 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [OmsetController::class, 'index'])->name('dashboard');
+    Route::get('/', [OmsetController::class, 'index'])->name('dashboard');
     Route::get('/omset/create', [OmsetController::class, 'create'])->name('omset.create');
+    Route::post('/omset', [OmsetController::class, 'store'])->name('omset.store');
     Route::get('/omset/edit/{omset}', [OmsetController::class, 'edit'])->name('omset.edit');
+    Route::put('/omset/{omset}', [OmsetController::class, 'update'])->name('omset.update');
+    Route::delete('/omset/{omset}', [OmsetController::class, 'delete'])->name('omset.delete');
 });
 require __DIR__ . '/auth.php';
