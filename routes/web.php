@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OmsetController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [OmsetController::class, 'index'])->name('dashboard');
+    Route::get('/omset/create', [OmsetController::class, 'create'])->name('omset.create');
+    Route::get('/omset/edit/{omset}', [OmsetController::class, 'edit'])->name('omset.edit');
+});
+require __DIR__ . '/auth.php';
