@@ -17,6 +17,18 @@
             <input type="text" class="form-control form-control-user" id="exampleInputNoPol" placeholder="Nama Supir">
         </div>
         <div class="form-group">
+            <p>Biaya/1 Mobil</p>
+            <input type="text" class="form-control form-control-user" id="exampleInputNoPol" placeholder="Biaya/1 Mobil">
+        </div>
+        <div class="form-group">
+            <p>Pengeluaran JKT</p>
+            <input type="text" class="form-control form-control-user" id="exampleInputNoPol" placeholder="Pengeluaran JKT">
+        </div>
+        <div class="form-group">
+            <p>Pengeluaran LPG</p>
+            <input type="text" class="form-control form-control-user" id="exampleInputNoPol" placeholder="Pengeluaran LPG">
+        </div>
+        <div class="form-group">
             <p>Jumlah</p>
             <input type="number" class="form-control form-control-user" id="exampleInputNoPol" placeholder="Jumlah Rp.">
         </div>

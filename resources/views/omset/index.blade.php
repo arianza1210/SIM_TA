@@ -23,6 +23,9 @@
                                 <th>Tanggal</th>
                                 <th>No Polisi</th>
                                 <th>Nama Supir</th>
+                                <th>Biaya/1 Mobil</th>
+                                <th>Pengeluaran JKT</th>
+                                <th>Pengeluaran LPG</th>
                                 <th>Jumlah</th>
                                 <th>Action</th>
 
@@ -36,6 +39,9 @@
                                 <td>BE 9781 BE</td>
                                 <td>Buyung</td>
                                 <td>Rp. 6.000.000</td>
+                                <td>Rp. 6.000.000</td>
+                                <td>Rp. 6.000.000</td>
+                                <td>Rp. 6.000.000</td>
                                 <td><a href="{{ route("omset.edit", 1) }}" class="btn-circle btn-warning btn-sm">
                                         <span class="icon text-white-20">
                                             <i class="fas fa-pen"></i>
@@ -48,23 +54,7 @@
                                     </a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>03/10/2021</td>
-                                <td>BE 9781 BE</td>
-                                <td>Buyung</td>
-                                <td>Rp. 7.000.000</td>
-                                <td><a href="{{ route("omset.edit", 1) }}" class="btn-circle btn-warning btn-sm">
-                                        <span class="icon text-white-20">
-                                            <i class="fas fa-pen"></i>
-                                        </span>
-                                    </a>
-                                    <a href="#" class="btn-circle btn-danger btn-sm">
-                                        <span class="icon text-white-20">
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                    </a>
-                                </td>
+
                         </tbody>
                     </table>
                 </div>
