@@ -12,18 +12,43 @@
     @endif
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Pendapatan</h1>
-    <a href="{{ route('omset.create') }}" class="btn btn-success btn-icon-split mb-3">
-        <span class="icon text-white-50">
-            <i class="fas fa-plus"></i>
-        </span>
-        <span class="text">Tambah Data</span>
-    </a>
-    <select class="btn btn-primary  mb-3" aria-label="Default select example">
-        <option selected>Bulan</option>
-        <option value="1">Januari</option>
-        <option value="2">Februari</option>
-        <option value="3">Maret</option>
-    </select>
+    <div class="d-flex">
+        <a href="{{ route('omset.create') }}" class="btn btn-success btn-icon-split mb-3">
+            <span class="icon text-white-50">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span class="text">Tambah Data</span>
+        </a>
+        <select class="btn btn-secondary dropdown-toggle mb-3 ml-3" aria-label="Default select example">
+            <option selected>Bulan</option>
+            <option value="01">Januari</option>
+            <option value="02">Februari</option>
+            <option value="03">Maret</option>
+            <option value="04">April</option>
+            <option value="05">Mei</option>
+            <option value="06">Juni</option>
+            <option value="07">Juli</option>
+            <option value="08">Agustus</option>
+            <option value="09">September</option>
+            <option value="10">Oktober</option>
+            <option value="11">November</option>
+            <option value="12">Desember</option>
+        </select>
+
+        <select class="btn btn-secondary dropdown-toggle mb-3 ml-1" aria-label="Default select example">
+            <option selected>Tahun</option>
+            <option value="1">2022</option>
+            <option value="2">2023</option>
+            <option value="3">2024</option>
+        </select>
+
+        <button type="button" class="btn btn-primary mb-3 ml-1"><i class="fas fa-search"></i> Cari</button>
+        <div class="ml-auto">
+            <button class="btn btn-success mb-3"><i class="fas fa-file-excel"></i> Excel</button>
+            <button class="btn btn-primary mb-3"><i class="fas fa-file-word"></i> Word</button>
+            <button class="btn btn-danger mb-3"><i class="fas fa-file-pdf"></i> PDF</button>
+        </div>
+    </div>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
 
