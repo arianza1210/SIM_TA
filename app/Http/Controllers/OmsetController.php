@@ -9,7 +9,7 @@ class OmsetController extends Controller
 {
     public function index()
     {
-        $omsets = Omset::all();
+        $omsets = Omset::orderBy("id", "desc")->get();
         return view('omset.index', compact('omsets'));
     }
 
