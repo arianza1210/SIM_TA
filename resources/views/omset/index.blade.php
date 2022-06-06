@@ -44,6 +44,7 @@
 
         <button type="button" class="btn btn-primary mb-3 ml-1"><i class="fas fa-search"></i> Cari</button>
         <div class="ml-auto">
+            <button class="btn btn-warning mb-3"><i class="fas fa-file-code"></i> Backup</button>
             <button class="btn btn-success mb-3"><i class="fas fa-file-excel"></i> Excel</button>
             <button class="btn btn-primary mb-3"><i class="fas fa-file-word"></i> Word</button>
             <button class="btn btn-danger mb-3"><i class="fas fa-file-pdf"></i> PDF</button>
