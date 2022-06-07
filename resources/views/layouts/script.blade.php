@@ -17,9 +17,21 @@
 
 <script>
     const rupiah = (number) => {
-        return new Intl.NumberFormat("id-ID", {
+        return (new Intl.NumberFormat("id-ID", {
             style: "currency",
             currency: "IDR"
-        }).format(number);
+        }).format(number)).replace(",00", "");
+    }
+
+    const rupiahToNumber = (rupiah) => {
+        const pattern = /[Rp .]/g;
+        if (rupiah.match(pattern)) {
+            if (rupiah == "Rp "){
+                return 0;
+            }
+            const number = rupiah.replace(pattern, '');
+            return parseInt(number);
+        }
+        return rupiah;
     }
 </script>

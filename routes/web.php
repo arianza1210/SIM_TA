@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\OmsetController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,5 +22,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/omset/edit/{omset}', [OmsetController::class, 'edit'])->name('omset.edit');
     Route::put('/omset/{omset}', [OmsetController::class, 'update'])->name('omset.update');
     Route::delete('/omset/{omset}', [OmsetController::class, 'delete'])->name('omset.delete');
+
+    Route::get('/export/database', [ExportController::class, 'database'])->name('export.database');
 });
 require __DIR__ . '/auth.php';
