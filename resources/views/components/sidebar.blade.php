@@ -3,7 +3,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
         <div class="sidebar-brand-icon ">
-            <i class="fas fa-user"></i>
+            <img src="/assets/img/Logo.png" alt="" style="width : 90%">
         </div>
         <div class="sidebar-brand-text mx-3"><sup>Cv. Citra Berkah Ekspress</sup></div>
     </a>
