@@ -24,5 +24,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/omset/{omset}', [OmsetController::class, 'delete'])->name('omset.delete');
 
     Route::get('/export/database', [ExportController::class, 'database'])->name('export.database');
+    Route::get('/export/excel', [ExportController::class, 'excel'])->name('export.excel');
+    Route::get('/export/word', [ExportController::class, 'word'])->name('export.word');
+    Route::get('/export/pdf', [ExportController::class, 'pdf'])->name('export.pdf');
 });
 require __DIR__ . '/auth.php';

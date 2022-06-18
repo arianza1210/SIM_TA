@@ -62,4 +62,19 @@ class ExportController extends Controller
         readfile($file_name);
         unlink($file_name);
     }
+
+    public function excel(Request $request)
+    {
+        return $request->all();
+    }
+
+    public function word(Request $request)
+    {
+
+    }
+
+    public function pdf(Request $request)
+    {
+
+    }
 }

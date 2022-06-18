@@ -7,10 +7,16 @@ use Illuminate\Http\Request;
 
 class OmsetController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $omsets = Omset::orderBy("id", "desc")->get();
-        return view('omset.index', compact('omsets'));
+        if ($request->bulan && $request->tahun) {
+            $filter = $request->tahun . '-' . $request->bulan . '-%';
+            $omsets = Omset::where('created_at', 'LIKE', $filter)->orderBy("id", "desc")->get();
+        }else{
+            $omsets = Omset::orderBy("id", "desc")->get();
+        }
+        $query = $request->getRequestUri();
+        return view('omset.index', compact('omsets', 'query'));
     }
 
     public function create()
