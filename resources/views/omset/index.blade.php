@@ -46,11 +46,11 @@
                 <button type="submit" class="btn btn-primary mb-3 ml-1"><i class="fas fa-search"></i> Cari</button>
             </form>
             <div class="ml-auto">
-                <a href="{{ route('export.database') }}"><button class="btn btn-warning mb-3"><i
+                <a href="{{ route('export.database') }}" target="_blank"><button class="btn btn-warning mb-3"><i
                             class="fas fa-file-code"></i> Backup</button></a>
-                <a href="{{ route("export.excel") . $query }}"><button class="btn btn-success mb-3"><i class="fas fa-file-excel"></i> Excel</button></a>
-                <a href="{{ route("export.word") . $query }}"><button class="btn btn-primary mb-3"><i class="fas fa-file-word"></i> Word</button></a>
-                <a href="{{ route("export.pdf") . $query }}"><button class="btn btn-danger mb-3"><i class="fas fa-file-pdf"></i> PDF</button></a>
+                <a href="{{ route("export.excel") . $query }}" target="_blank"><button class="btn btn-success mb-3"><i class="fas fa-file-excel"></i> Excel</button></a>
+                <a href="{{ route("export.word") . $query }}" target="_blank"><button class="btn btn-primary mb-3"><i class="fas fa-file-word"></i> Word</button></a>
+                <a href="{{ route("export.pdf") . $query }}" target="_blank"><button class="btn btn-danger mb-3"><i class="fas fa-file-pdf"></i> PDF</button></a>
             </div>
         </div>
         <!-- DataTales Example -->

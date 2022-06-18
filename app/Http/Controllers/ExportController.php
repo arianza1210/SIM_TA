@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Omset;
 use Illuminate\Http\Request;
+use PDF;
 
 class ExportController extends Controller
 {
@@ -65,16 +67,34 @@ class ExportController extends Controller
 
     public function excel(Request $request)
     {
-        return $request->all();
+        if ($request->bulan && $request->tahun) {
+            $filter = $request->tahun . '-' . $request->bulan . '-%';
+            $omsets = Omset::where('created_at', 'LIKE', $filter)->orderBy("id", "desc")->get();
+        } else {
+            $omsets = Omset::orderBy("id", "desc")->get();
+        }
     }
 
     public function word(Request $request)
     {
-
+        if ($request->bulan && $request->tahun) {
+            $filter = $request->tahun . '-' . $request->bulan . '-%';
+            $omsets = Omset::where('created_at', 'LIKE', $filter)->orderBy("id", "desc")->get();
+        } else {
+            $omsets = Omset::orderBy("id", "desc")->get();
+        }
     }
 
     public function pdf(Request $request)
     {
-
+        if ($request->bulan && $request->tahun) {
+            $filter = $request->tahun . '-' . $request->bulan . '-%';
+            $omsets = Omset::where('created_at', 'LIKE', $filter)->orderBy("id", "desc")->get();
+        } else {
+            $omsets = Omset::orderBy("id", "desc")->get();
+        }
+        $pdf = PDF::loadview('export.pdf', ['omsets' => $omsets]);
+        $pdf->setPaper('A4', 'landscape');
+        return $pdf->stream('Laporan-Omset-Pendapatan-CV-Citra-Berkah-Express.pdf');
     }
 }
