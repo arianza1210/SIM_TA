@@ -15,7 +15,7 @@
         }
     </style>
     <center>
-        <h5>Laporan Omset Pendapatan CV. Citra Berkah Express</h4>
+        <h4>Laporan Omset Pendapatan CV. Citra Berkah Express</h4>
     </center>
 
     <table class='table table-bordered'>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Omset;
 use Illuminate\Http\Request;
 use PDF;
+use App\Exports\OmsetExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ExportController extends Controller
 {
@@ -73,6 +75,8 @@ class ExportController extends Controller
         } else {
             $omsets = Omset::orderBy("id", "desc")->get();
         }
+
+        return Excel::download(new OmsetExport($omsets), 'Laporan-Omset-Pendapatan.xlsx');
     }
 
     public function word(Request $request)
@@ -83,6 +87,29 @@ class ExportController extends Controller
         } else {
             $omsets = Omset::orderBy("id", "desc")->get();
         }
+
+        $template = asset('LaporanTemplate.docx');
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template);
+
+        $templateProcessor->setValue('judul', "Laporan Omset Pendapatan CV. Citra Berkah Express");
+        $templateProcessor->setValue('total', rupiah($omsets->sum('jumlah_omset_bersih')));
+
+        $no = 1;
+        $templateProcessor->cloneRow('no', $omsets->count());
+        foreach ($omsets as $omset) {
+            $templateProcessor->setValue('no#' . $no, $no);
+            $templateProcessor->setValue('tanggal#' . $no, $omset->created_at->format('Y-m-d'));
+            $templateProcessor->setValue('nopol#' . $no, $omset->nopol);
+            $templateProcessor->setValue('nama_supir#' . $no, $omset->nama_supir);
+            $templateProcessor->setValue('biaya_mobil#' . $no, rupiah($omset->biaya_mobil));
+            $templateProcessor->setValue('pengeluaran_jkt#' . $no, rupiah($omset->pengeluaran_jkt));
+            $templateProcessor->setValue('pengeluaran_lpg#' . $no, rupiah($omset->pengeluaran_lpg));
+            $templateProcessor->setValue('jumlah#' . $no, rupiah($omset->jumlah_omset_bersih));
+            $no++;
+        }
+
+        $templateProcessor->saveAs('Laporan-Omset-Pendapatan');
+        return response()->download(public_path('Laporan-Omset-Pendapatan'));
     }
 
     public function pdf(Request $request)
@@ -93,7 +120,7 @@ class ExportController extends Controller
         } else {
             $omsets = Omset::orderBy("id", "desc")->get();
         }
-        $pdf = PDF::loadview('export.pdf', ['omsets' => $omsets]);
+        $pdf = PDF::loadview('exports.pdf', ['omsets' => $omsets]);
         $pdf->setPaper('A4', 'landscape');
         return $pdf->stream('Laporan-Omset-Pendapatan-CV-Citra-Berkah-Express.pdf');
     }
