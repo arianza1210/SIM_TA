@@ -103,23 +103,19 @@
                                     </td>
                                 </tr>
                             @endforeach
-                            <tr>
-                                <td colspan="7">TOTAL</td>
-                                <td colspan="2" id="uang">{{ $omsets->sum('jumlah_omset_bersih') }}</td>
-                                <td style="display: none;"></td>
-                                <td style="display: none;"></td>
-                                <td style="display: none;"></td>
-                                <td style="display: none;"></td>
-                                <td style="display: none;"></td>
-                                <td style="display: none;"></td>
-                                <td style="display: none;"></td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
+        <div class="card shadow mb-4 border border-primary">
+            <div class="card-body bg-primary">
+                <div class="text-center">
+                    <h3 class="text-white mt-1">TOTAL : <span id="uang">{{ $omsets->sum('jumlah_omset_bersih') }}</span></h3>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
