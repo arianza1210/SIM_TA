@@ -16,7 +16,7 @@ class ExportController extends Controller
         $mysqlUserName      = env('DB_USERNAME');
         $mysqlPassword      = env('DB_PASSWORD');
         $DbName             = env('DB_DATABASE');
-        $tables             = array("users", "omset");
+        $tables             = array("users", "omset", "migrations");
 
         $connect = new \PDO("mysql:host=$mysqlHostName;dbname=$DbName;charset=utf8", "$mysqlUserName", "$mysqlPassword", array(\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
         $get_all_table_query = "SHOW TABLES";
@@ -46,7 +46,23 @@ class ExportController extends Controller
                 $table_value_array = array_values($single_result);
                 $output .= "\nINSERT INTO $table (";
                 $output .= "" . implode(", ", $table_column_array) . ") VALUES (";
-                $output .= "'" . implode("','", $table_value_array) . "');\n";
+
+                foreach($table_value_array as $key => $value) {
+                    if($key < count($table_value_array) - 1) {
+                        if($value == null) {
+                            $output .= "null, ";
+                        } else {
+                            $output .= "'" . $value . "', ";
+                        }
+                    } else {
+                        if ($value == null) {
+                            $output .= "null, ";
+                        } else {
+                            $output .= "'" . $value . "'";
+                        }
+                    }
+                }
+                $output .= ");\n";
             }
         }
         $file_name = 'database_backup_on_' . date('y-m-d') . '.sql';
