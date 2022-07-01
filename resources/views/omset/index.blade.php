@@ -39,12 +39,12 @@
                             <option value="12">Desember</option>
                         </select>
                     </div>
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-3 ml-4">
                         <div class="input-group date" id="tahun" data-target-input="nearest">
                             <div class="input-group-append" data-target="#tahun" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                             </div>
-                            <input type="text" class="form-control datetimepicker-input" data-target="#tahun"
+                            <input type="text" style="width: 100px" class="form-control datetimepicker-input" data-target="#tahun"
                                 name="tahun" placeholder="Tahun" />
                         </div>
                     </div>

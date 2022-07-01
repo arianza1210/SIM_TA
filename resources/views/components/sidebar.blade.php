@@ -3,7 +3,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
         <div class="sidebar-brand-icon ">
-            <img src="/assets/img/Logo.png" alt="" style="width : 90%">
+            <img src="/assets/img/Logo.png" alt="" style="width : 60%">
         </div>
     </a>
 
