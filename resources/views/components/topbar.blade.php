@@ -1,4 +1,6 @@
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+    <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100"><b>CV. CITRA BERKAH EXPRESS INDO LAMPUNG</b></div>
+
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
 

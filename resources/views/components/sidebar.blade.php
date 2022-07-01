@@ -5,7 +5,6 @@
         <div class="sidebar-brand-icon ">
             <img src="/assets/img/Logo.png" alt="" style="width : 90%">
         </div>
-        <div class="sidebar-brand-text mx-3"><sup>Cv. Citra Berkah Ekspress</sup></div>
     </a>
 
     <!-- Divider -->

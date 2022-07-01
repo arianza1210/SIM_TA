@@ -15,6 +15,9 @@
 <!-- Page level custom scripts -->
 <script src="/assets/js/demo/datatables-demo.js"></script>
 
+<!-- datetimepicker -->
+<script src="{{ asset('assets/vendor/moment/moment.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 <script>
     const rupiah = (number) => {
         return (new Intl.NumberFormat("id-ID", {
